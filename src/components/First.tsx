@@ -1,23 +1,27 @@
 import * as React from 'react';
 
 
-export default class First extends React.Component<any, any> {
-  render() {
-    return (
-      <div style={{ textAlign: 'center' }}>
-        <h1 style={{ width: '50%', margin: '0 auto' }}>
-          Hello! I’m JSX
-        </h1>
 
-        <button onClick={this.makeErrorToConsoleLog}>
-          Click me for error to console.log (test of source-map)
-        </button>
-      </div>
-    );
-  }
+const First: React.FC = () => {
+const [isChecked, setIsChecked] = React.useState<boolean>(false);
+  const changeHandler = () => {
+    console.log("checked");
+    setIsChecked(!isChecked);
 
-  makeErrorToConsoleLog() {
-    // test for source-map
-    this.props.error();
   }
+return (
+<div style={{ textAlign: 'center' }}>
+  <h1 style={{ width: '50%', margin: '0 auto' }}>
+    Hello! I’m JSX
+  </h1>
+  <div>
+    {isChecked && <div>Got it</div>}
+  </div>
+  <div>
+    <input onChange={changeHandler} type="checkbox" id="vehicle" name="vehicle" value="Boat"/>
+  </div>
+</div>
+);
 }
+
+export default First;
