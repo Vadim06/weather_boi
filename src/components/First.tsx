@@ -7,12 +7,15 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   checkbox: {
-    margin: '20px 10px 15px',
-    padding: '30px',
-    border: '2px dotted pink',
-
-  }
-})
+    display: 'flex',
+    marginLeft: '709px',
+  },
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'left',
+    justifyContent: 'left',
+  },
+});
 
 const First: React.FC = () => {
   const [isChecked, setIsChecked] = React.useState<boolean>(false);
@@ -37,17 +40,17 @@ const First: React.FC = () => {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <h1 style={{ width: '50%', margin: '0 auto' }}>
-        Hello! I’m JSX
-  </h1>
-      <div>
+      <div className={classes.flexContainer}>
+        <TextField  placeholder="Type here" variant="outlined" label="City" inputRef={inputEl} onChange={changeInputHandler} />
         <Checkbox className={classes.checkbox} onChange={changeHandler} />
+      </div>
+      <div>
         <div>
           <Badge badgeContent={isChecked ? 1 : 0} color="primary">
             <SubscriptionsIcon />
           </Badge>
           <br />
-          <TextField placeholder="Type here" variant="outlined" label="City" inputRef={inputEl} onChange={changeInputHandler} />
+
         </div>
       </div>
     </div>
