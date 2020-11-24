@@ -74,24 +74,12 @@ const First: React.FC = () => {
         </div>
       </div>
       <div className={classes.root}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={3} lg={2}>
-            <Paper className={classes.paper}>xs=12 sm=6</Paper>
+        <Grid container spacing={2}  justify="center">
+          <Grid item sm={12} md={6} lg={3}>
+            <Paper className={classes.paper}>xs=12 sm=6 lg=3</Paper>
           </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={2}>
-            <Paper className={classes.paper}>xs=12 sm=6</Paper>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={2}>
-            <Paper className={classes.paper}>xs=12 sm=6</Paper>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={2}>
-            <Paper className={classes.paper}>xs=12 sm=6</Paper>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={2}>
-            <Paper className={classes.paper}>xs=12 sm=6</Paper>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={2}>
-            <Paper className={classes.paper}>xs=12 sm=6</Paper>
+          <Grid item sm={12} md={6} lg={3}>
+            <Paper className={classes.paper}>xs=12 sm=6 lg=3</Paper>
           </Grid>
         </Grid>
       </div>
