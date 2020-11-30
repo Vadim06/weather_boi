@@ -1,11 +1,12 @@
 import * as React from "react";
-import { Checkbox } from "@material-ui/core";
+import { Button, Checkbox } from "@material-ui/core";
 import Badge from "@material-ui/core/Badge";
 import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
 import { TextField } from "@material-ui/core";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -40,6 +41,8 @@ const First: React.FC = () => {
   //   isChecked = znachenie;
   // }
 
+  const[currentWeather, setCurrentWeather] = React.useState<object>(null);
+
   const inputEl = React.useRef<HTMLInputElement>(null);
   const changeHandler = () => {
     console.log("checked");
@@ -50,6 +53,19 @@ const First: React.FC = () => {
   }, [inputEl]);
 
   const classes = useStyles();
+  
+  const units = "metric";
+  const apiKey = '7d89cf1987ae6067d0942af37fe4a957';
+  const cityName = "olomouc";
+  const fetchURL = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=${units}`;
+
+  const clickHandler = async () => {
+      const response = await fetch(fetchURL);
+      console.log(response);
+      const json = await response.json();
+      console.log(json);
+      setCurrentWeather(json);
+  };
 
   return (
     <>
@@ -74,9 +90,12 @@ const First: React.FC = () => {
         </div>
       </div>
       <div className={classes.root}>
-        <Grid container spacing={2}  justify="center">
+        <Grid container spacing={2} justify="center" alignItems="center">
+          <Grid item align="center" xs={12}>
+            <Button variant="outlined" color="primary" onClick={clickHandler}>fetch weather</Button>
+          </Grid>
           <Grid item sm={12} md={6} lg={3}>
-            <Paper className={classes.paper}>xs=12 sm=6 lg=3</Paper>
+            <Paper className={classes.paper}>{currentWeather}</Paper>
           </Grid>
           <Grid item sm={12} md={6} lg={3}>
             <Paper className={classes.paper}>xs=12 sm=6 lg=3</Paper>
