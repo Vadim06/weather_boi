@@ -41,7 +41,7 @@ const First: React.FC = () => {
   //   isChecked = znachenie;
   // }
 
-  const[currentWeather, setCurrentWeather] = React.useState<object>(null);
+  const[currentWeather, setCurrentWeather] = React.useState<object>({});
 
   const inputEl = React.useRef<HTMLInputElement>(null);
   const changeHandler = () => {
@@ -95,7 +95,7 @@ const First: React.FC = () => {
             <Button variant="outlined" color="primary" onClick={clickHandler}>fetch weather</Button>
           </Grid>
           <Grid item sm={12} md={6} lg={3}>
-            <Paper className={classes.paper}>{currentWeather}</Paper>
+            <Paper className={classes.paper}></Paper>
           </Grid>
           <Grid item sm={12} md={6} lg={3}>
             <Paper className={classes.paper}>xs=12 sm=6 lg=3</Paper>
