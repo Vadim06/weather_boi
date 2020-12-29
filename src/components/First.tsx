@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme: Theme) =>
     checkbox: {
       display: "flex",
       position: "absolute",
-      left: '50%',
-      transform: 'translateX(-50%)',
+      left: "50%",
+      transform: "translateX(-50%)",
     },
     flexContainer: {
       display: "flex",
@@ -41,7 +41,7 @@ const First: React.FC = () => {
   //   isChecked = znachenie;
   // }
 
-  const[currentWeather, setCurrentWeather] = React.useState<object>({});
+  const [currentWeather, setCurrentWeather] = React.useState<any>(null);
 
   const inputEl = React.useRef<HTMLInputElement>(null);
   const changeHandler = () => {
@@ -53,18 +53,17 @@ const First: React.FC = () => {
   }, [inputEl]);
 
   const classes = useStyles();
-  
+
   const units = "metric";
-  const apiKey = '7d89cf1987ae6067d0942af37fe4a957';
+  const apiKey = "7d89cf1987ae6067d0942af37fe4a957";
   const cityName = "olomouc";
   const fetchURL = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=${units}`;
 
   const clickHandler = async () => {
-      const response = await fetch(fetchURL);
-      console.log(response);
-      const json = await response.json();
-      console.log(json);
-      setCurrentWeather(json);
+    const response = await fetch(fetchURL);
+    const json = await response.json();
+    console.log(json);
+    setCurrentWeather(json);
   };
 
   return (
@@ -91,11 +90,14 @@ const First: React.FC = () => {
       </div>
       <div className={classes.root}>
         <Grid container spacing={2} justify="center" alignItems="center">
-          <Grid item align="center" xs={12}>
-            <Button variant="outlined" color="primary" onClick={clickHandler}>fetch weather</Button>
+          <Grid item xs={12}>
+            <Button variant="outlined" color="primary" onClick={clickHandler}>
+              fetch weather
+            </Button>
           </Grid>
           <Grid item sm={12} md={6} lg={3}>
-            <Paper className={classes.paper}></Paper>
+            {currentWeather && <div><span>temp now: </span>{currentWeather?.main?.temp}</div>}
+            {currentWeather && <div><span>feels like: </span>{currentWeather?.main?.feels_like}</div>}
           </Grid>
           <Grid item sm={12} md={6} lg={3}>
             <Paper className={classes.paper}>xs=12 sm=6 lg=3</Paper>
