@@ -6,9 +6,6 @@ import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      flexGrow: 1,
-    },
     paper: {
       padding: theme.spacing(2),
       textAlign: "center",
@@ -63,25 +60,13 @@ const First: React.FC = () => {
           />
         </div>
       </div>
-      <div className={classes.root}>
-        <Grid container spacing={2} justify="center" alignItems="center">
-          <Grid item xs={12}></Grid>
-          <Grid item sm={12} md={6} lg={3}>
-            {currentWeather && (
-              <div>
-                <span>temp now: </span>
-                {currentWeather?.main?.temp}
-              </div>
-            )}
-            {currentWeather && (
-              <div>
-                <span>feels like: </span>
-                {currentWeather?.main?.feels_like}
-              </div>
-            )}
-          </Grid>
+      <Grid container justify="center" alignItems="center">
+        <Grid item xs={12} sm={6}>
+          {currentWeather}
         </Grid>
-      </div>
+        <Grid item xs={12} sm={6}></Grid>
+        <Grid item xs={12}></Grid>
+      </Grid>
     </>
   );
 };
