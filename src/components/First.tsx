@@ -1,10 +1,7 @@
 import * as React from "react";
-import { Button, Checkbox } from "@material-ui/core";
-import Badge from "@material-ui/core/Badge";
-import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
+import { Button } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -33,24 +30,9 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const First: React.FC = () => {
-  const [isChecked, setIsChecked] = React.useState<boolean>(false);
-
-  // let isChecked: boolean = false;
-
-  // function setIsChecked(znachenie) {
-  //   isChecked = znachenie;
-  // }
-
   const [currentWeather, setCurrentWeather] = React.useState<any>(null);
 
   const inputEl = React.useRef<HTMLInputElement>(null);
-  const changeHandler = () => {
-    console.log("checked");
-    setIsChecked(!isChecked);
-  };
-  const changeInputHandler = React.useCallback(() => {
-    if (inputEl && inputEl.current) console.log(inputEl.current.value);
-  }, [inputEl]);
 
   const classes = useStyles();
 
@@ -68,6 +50,9 @@ const First: React.FC = () => {
 
   return (
     <>
+      <Button variant="outlined" color="primary" onClick={clickHandler}>
+        fetch weather
+      </Button>
       <div style={{ textAlign: "center" }}>
         <div className={classes.flexContainer}>
           <TextField
@@ -75,32 +60,25 @@ const First: React.FC = () => {
             variant="outlined"
             label="City"
             inputRef={inputEl}
-            onChange={changeInputHandler}
           />
-          <Checkbox className={classes.checkbox} onChange={changeHandler} />
-        </div>
-        <div>
-          <div>
-            <Badge badgeContent={isChecked ? 1 : 0} color="primary">
-              <SubscriptionsIcon />
-            </Badge>
-            <br />
-          </div>
         </div>
       </div>
       <div className={classes.root}>
         <Grid container spacing={2} justify="center" alignItems="center">
-          <Grid item xs={12}>
-            <Button variant="outlined" color="primary" onClick={clickHandler}>
-              fetch weather
-            </Button>
-          </Grid>
+          <Grid item xs={12}></Grid>
           <Grid item sm={12} md={6} lg={3}>
-            {currentWeather && <div><span>temp now: </span>{currentWeather?.main?.temp}</div>}
-            {currentWeather && <div><span>feels like: </span>{currentWeather?.main?.feels_like}</div>}
-          </Grid>
-          <Grid item sm={12} md={6} lg={3}>
-            <Paper className={classes.paper}>xs=12 sm=6 lg=3</Paper>
+            {currentWeather && (
+              <div>
+                <span>temp now: </span>
+                {currentWeather?.main?.temp}
+              </div>
+            )}
+            {currentWeather && (
+              <div>
+                <span>feels like: </span>
+                {currentWeather?.main?.feels_like}
+              </div>
+            )}
           </Grid>
         </Grid>
       </div>
