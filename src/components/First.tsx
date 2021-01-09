@@ -62,10 +62,33 @@ const First: React.FC = () => {
       </div>
       <Grid container justify="center" alignItems="center">
         <Grid item xs={12} sm={6}>
-          {currentWeather}
+          <Grid item xs={12}>
+            city name
+          </Grid>
+          <Grid item xs={12}>
+            date
+          </Grid>
+          <Grid container>
+            <Grid item xs={6}>
+              currentWeather {currentWeather}
+            </Grid>
+            <Grid item xs={6}>
+              conditions
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            feels like
+          </Grid>
+          <Grid item xs={12}>
+            wind
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={6}></Grid>
-        <Grid item xs={12}></Grid>
+        <Grid item xs={12} sm={6}>
+          visualization
+        </Grid>
+        <Grid item xs={12}>
+          day menu
+        </Grid>
       </Grid>
     </>
   );
