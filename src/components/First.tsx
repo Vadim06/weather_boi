@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       color: theme.palette.text.secondary,
     },
-
     checkbox: {
       display: "flex",
       position: "absolute",
@@ -22,6 +21,12 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       position: "relative",
       justifyContent: "left",
+    },
+    currentTemperature: {
+      background: "cyan",
+    },
+    cityName: {
+      color: "red",
     },
   })
 );
@@ -62,15 +67,15 @@ const First: React.FC = () => {
       </div>
       <Grid container justify="center" alignItems="center">
         <Grid item xs={12} sm={6}>
-          <Grid item xs={12}>
-            city name
+          <Grid item xs={12} classes={{ root: classes.cityName }}>
+            Olomouc
           </Grid>
           <Grid item xs={12}>
             date
           </Grid>
           <Grid container>
-            <Grid item xs={6}>
-              currentWeather {currentWeather}
+            <Grid item xs={6} classes={{ root: classes.currentTemperature }}>
+              -3.5 {currentWeather}
             </Grid>
             <Grid item xs={6}>
               conditions
