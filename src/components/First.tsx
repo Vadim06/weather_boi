@@ -24,9 +24,25 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     currentTemperature: {
       background: "cyan",
+      fontSize: "25px",
+      fontFamily: "Trebuchet MS",
+    },
+    currentTemperatureContent: {
+      display: "inline-block",
+      backgroundColor: "cyan",
+      fontSize: "25px",
+      fontFamily: "Trebuchet MS",
     },
     cityName: {
       color: "red",
+      fontFamily: "verdana",
+      fontSize: "25px",
+      textDecoration: "underline",
+    },
+    details: {
+      borderStyle: "dotted",
+      fontFamily: "Optima",
+      color: "lightGrey",
     },
   })
 );
@@ -71,22 +87,32 @@ const First: React.FC = () => {
             Olomouc
           </Grid>
           <Grid item xs={12}>
-            date
+            Su, 10.1
           </Grid>
           <Grid container>
-            <Grid item xs={6} classes={{ root: classes.currentTemperature }}>
-              -3.5 {currentWeather}
+            <Grid item xs={6}>
+              <div className={classes.currentTemperatureContent}>
+                -3,5 {currentWeather}
+              </div>
             </Grid>
             <Grid item xs={6}>
               conditions
             </Grid>
           </Grid>
-          <Grid item xs={12}>
-            feels like
+          <div className={classes.details}>
+            <Grid item xs={12}>
+              feels like
           </Grid>
-          <Grid item xs={12}>
-            wind
+            <Grid item xs={12}>
+              wind
           </Grid>
+            <Grid item xs={12}>
+              pressure
+          </Grid>
+            <Grid item xs={12}>
+              humidity
+          </Grid>
+          </div>
         </Grid>
         <Grid item xs={12} sm={6}>
           visualization
