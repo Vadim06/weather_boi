@@ -23,9 +23,14 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: "left",
     },
     currentTemperature: {
-      background: "cyan",
+      display: "flex",
+      justifyContent: "space-between",
+      backgroundColor: "cyan",
       fontSize: "25px",
       fontFamily: "Trebuchet MS",
+    },
+    currentTemperatureHeading: {
+      display: "inline-block",
     },
     currentTemperatureContent: {
       display: "inline-block",
@@ -90,7 +95,10 @@ const First: React.FC = () => {
             Su, 10.1
           </Grid>
           <Grid container>
-            <Grid item xs={6}>
+            <Grid item xs={6} classes={{ root: classes.currentTemperature }}>
+              <div className={classes.currentTemperatureHeading}>
+                Temperature
+              </div>
               <div className={classes.currentTemperatureContent}>
                 -3,5 {currentWeather}
               </div>
@@ -102,16 +110,16 @@ const First: React.FC = () => {
           <div className={classes.details}>
             <Grid item xs={12}>
               feels like
-          </Grid>
+            </Grid>
             <Grid item xs={12}>
               wind
-          </Grid>
+            </Grid>
             <Grid item xs={12}>
               pressure
-          </Grid>
+            </Grid>
             <Grid item xs={12}>
               humidity
-          </Grid>
+            </Grid>
           </div>
         </Grid>
         <Grid item xs={12} sm={6}>
