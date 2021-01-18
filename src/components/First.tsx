@@ -29,13 +29,10 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: "25px",
       fontFamily: "Trebuchet MS",
     },
-    currentTemperatureHeading: {
-      display: "inline-block",
-    },
     currentTemperatureContent: {
       display: "inline-block",
       backgroundColor: "cyan",
-      fontSize: "25px",
+      fontSize: "30px",
       fontFamily: "Trebuchet MS",
     },
     cityName: {
@@ -47,7 +44,50 @@ const useStyles = makeStyles((theme: Theme) =>
     details: {
       borderStyle: "dotted",
       fontFamily: "Optima",
-      color: "lightGrey",
+      color: "#393737",
+      fontSize: "20px",
+      paddingRight: "5px",
+      paddingLeft: "5px",
+    },
+    feels: {
+      display: "flex",
+      justifyContent: "space-between",
+    },
+    feelsHeading: {
+      display: "inline-block",
+    },
+    feelsContent: {
+      display: "inline-block",
+    },
+    wind: {
+      display: "flex",
+      justifyContent: "space-between",
+    },
+    windHeading: {
+      display: "inline-block",
+    },
+    windContent: {
+      display: "inline-block",
+    },
+    pressure: {
+      display: "flex",
+      justifyContent: "space-between",
+    },
+    pressureHeading: {
+      display: "inline-block",
+    },
+    pressureContent: {
+      display: "inline-block",
+    },
+    humidity: {
+      display: "flex",
+      justifyContent: "space-between",
+    },
+    humidityHeading: {
+      display: "inline-block",
+    },
+    humidityContent: {
+      display: "inline-block",
     },
   })
 );
@@ -86,8 +126,8 @@ const First: React.FC = () => {
           />
         </div>
       </div>
-      <Grid container justify="center" alignItems="center">
-        <Grid item xs={12} sm={6}>
+      <Grid container justify="flex-start" alignItems="flex-start">
+        <Grid item xs={12} sm={3}>
           <Grid item xs={12} classes={{ root: classes.cityName }}>
             Olomouc
           </Grid>
@@ -95,10 +135,7 @@ const First: React.FC = () => {
             Su, 10.1
           </Grid>
           <Grid container>
-            <Grid item xs={6} classes={{ root: classes.currentTemperature }}>
-              <div className={classes.currentTemperatureHeading}>
-                Temperature
-              </div>
+            <Grid item xs={6}>
               <div className={classes.currentTemperatureContent}>
                 -3,5 {currentWeather}
               </div>
@@ -108,17 +145,37 @@ const First: React.FC = () => {
             </Grid>
           </Grid>
           <div className={classes.details}>
-            <Grid item xs={12}>
+            <Grid item xs={12} classes={{ root: classes.feels}}>
+              <div className={classes.feelsHeading}>
               feels like
+              </div>
+              <div className={classes.feelsContent}>
+                -5 °C
+              </div>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} className={classes.wind}>
+              <div className={classes.windHeading}>
               wind
+              </div>
+              <div className={classes.wind}>
+                3 m/s
+                </div>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} className={classes.pressure}>
+              <div className={classes.pressureHeading}>
               pressure
+              </div>
+              <div className={classes.pressureContent}>
+                745 mm
+                </div>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} className={classes.humidity}>
+              <div className={classes.humidityHeading}>
               humidity
+              </div>
+              <div className={classes.humidityContent}>
+                45 %
+              </div>
             </Grid>
           </div>
         </Grid>
@@ -132,5 +189,7 @@ const First: React.FC = () => {
     </>
   );
 };
+
+
 
 export default First;
